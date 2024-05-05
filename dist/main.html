@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css" />
+    <link rel="stylesheet" href="style.css" />
+    <title>Document</title>
+    <style>
+        .container:hover .overlay-button {
+            opacity: 100;
+        }
+    </style>
+    <script src="https://sdk.scdn.co/spotify-player.js"></script>
+</head>
+
+<body class="h-screen w-screen flex justify-center items-center bg-gradient-to-r from-purple-700 to-pink-500">
+    <div class="h-[95%] w-[95%] bg-[#2d3843] rounded-large flex-col justify-center box-border">
+        <nav class="h-[10%] w-[85vw] bg-[#74809b] rounded-large flex justify-around items-center mx-auto mt-6">
+            <!-- user details starts here -->
+            <div class="flex justify-center items-center" id="card">
+                <div class="w-[68px] h-[68px] rounded-full overflow-hidden">
+                    <img class="h-[68px] w-[68px] object-cover" src="../asset/images/userimg.jpg" alt="User Image" />
+                </div>
+                <div class="ml-3">
+                    <div class="font-bold text-2xl text-white">User name</div>
+                    <p class="text-[#25e9a6]">Premium</p>
+                </div>
+            </div>
+            <!-- user details ends here -->
+
+            <!-- search box starts here -->
+            <div class="h-[60%] flex items-center bg-[#aaadaf] rounded-full">
+                <input
+                    class="h-[100%] pl-5 box-border text-[26px] w-80 focus:outline-none bg-[#aaadaf] rounded-l-large placeholder:text-black"
+                    type="text" placeholder="Search" />
+                <button>
+                    <i class="fa-solid mx-5 !text-2xl fa-magnifying-glass"></i>
+                </button>
+            </div>
+            <!-- all 3 icons -->
+            <div class="h-[70%] flex gap-5">
+                <!-- <div class="h-[100%] aspect-square grid place-content-center bg-[#aaadaf] rounded-full">
+                    <button>
+                        <i class="fa-solid text-red-500 !text-4xl fa-heart"></i>
+                    </button>
+                </div> -->
+
+                <div class="h-[100%] aspect-square grid place-content-center bg-[#aaadaf] rounded-full">
+                    <button><i class="fa-solid !text-4xl fa-gear"></i></button>
+                </div>
+
+                <div class="h-[100%] aspect-square grid place-content-center bg-[#aaadaf] rounded-full">
+                    <button><i class="fa-regular !text-4xl fa-bell"></i></button>
+                </div>
+            </div>
+        </nav>
+        <main class="h-[calc(100%-10%-24px)] w-[85vw] mx-auto grid grid-cols-10 rounded-large">
+            <!-- left side items contains 3 divs-->
+            <div class="h-full col-span-7 flex flex-col overflow-hidden">
+                <!-- First div is here, it is the main div -->
+                <div
+                    class="h-auto bg-gradient-to-r from-[#74809b] text-white to-transparent rounded-[45px] mt-7 w-[95%]">
+                    <!-- this div conatins all the sub part -->
+                    <div class="h-[15em] flex justify-start items-center">
+                        <!-- image div -->
+                        <div class="container relative inline-block h-[12em] w-[12em] rounded-3xl mx-20 hover:">
+                            <img class="container-img h-full w-full object-cover rounded-xl hover:opacity-50"
+                                src="../asset/images/albumcover.jpg" alt="Album Cover Pic" />
+                            <i class="overlay-button absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 opacity-0 transition-opacity duration-300 fa-solid text-red-500 !text-4xl fa-heart"></i>
+                        </div>
+                        <!-- song details div -->
+                        <div class="h-[12em] w-[45%] flex-col">
+                            <!-- song name div -->
+                            <div class="h-[53%]">
+                                <h1 class="font-bold text-6xl">Song Name</h1>
+                                <h1 class="font-semibold text-2xl text-right mt-1">
+                                    By Artist Name
+                                </h1>
+                            </div>
+                            <!-- music controls div -->
+                            <div class="h-[47%] flex-col">
+                                <input class="mt-1 w-full h-[6px] bg-white" type="range" name="progressBar"
+                                    id="progressBar" />
+                                <div class="flex justify-between font-medium items-center">
+                                    <span>0:00</span>
+                                    <span>3:00</span>
+                                </div>
+                                <div class="flex justify-center items-center gap-7">
+                                    <button><i class="fa !text-[28px] fa-shuffle"></i></button>
+                                    <button>
+                                        <i class="fas !text-[40px] fa-step-backward"></i>
+                                    </button>
+                                    <button>
+                                        <i class="far !text-[40px] fa-play-circle"></i>
+                                    </button>
+                                    <button>
+                                        <i class="fas !text-[40px] fa-step-forward"></i>
+                                    </button>
+                                    <button><i class="fa !text-[28px] fa-repeat"></i></button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- second div is here -->
+                <div class="h-auto flex justify-between items-center w-[95%] mt-4">
+                    <span class="font-bold text-white text-2xl">Search Results</span>
+                    <button class="bg-transparent border-2 text-green-500 px-10 rounded-lg border-green-500 mr-6">
+                        Filter
+                    </button>
+                </div>
+                <!-- third div is here -->
+                <div class="max-h-[calc(100%-370px)] w-[96%] mt-6 overflow-auto">
+
+                    <div class="flex justify-between items-center h-[120px] w-[99%] bg-[#74809b] rounded-3xl">
+                        <div class="h-[80%] ml-6 w-auto rounded-xl">
+                            <img class="h-full w-full object-cover rounded-xl" src="..//asset/images/albumcover.jpg"
+                                alt="Song album picture" />
+                        </div>
+                        <div class="w-[25%] font-bold flex justify-start items-center text-white text-4xl">
+                            Song name
+                        </div>
+                        <div class="w-[30%] font-bold text-xl">Artists Name</div>
+                        <div class="font-semibold text-white text-[22px]">0:00</div>
+                        <button class="font-semibold text-[25px] mr-10"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                    <div class="flex justify-between items-center h-[120px] w-[99%] mt-6 bg-[#74809b] rounded-3xl">
+                        <div class="h-[80%] ml-6 w-auto rounded-xl">
+                            <img class="h-full w-full object-cover rounded-xl" src="..//asset/images/albumcover.jpg"
+                                alt="Song album picture" />
+                        </div>
+                        <div class="w-[25%] font-bold flex justify-start items-center text-white text-4xl">
+                            Song name
+                        </div>
+                        <div class="w-[30%] font-bold text-xl">Artists Name</div>
+                        <div class="font-semibold text-white text-[22px]">0:00</div>
+                        <button class="font-semibold text-[25px] mr-10"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                    <div class="flex justify-between items-center h-[120px] w-[99%] mt-6 bg-[#74809b] rounded-3xl">
+                        <div class="h-[80%] ml-6 w-auto rounded-xl">
+                            <img class="h-full w-full object-cover rounded-xl" src="..//asset/images/albumcover.jpg"
+                                alt="Song album picture" />
+                        </div>
+                        <div class="w-[25%] font-bold flex justify-start items-center text-white text-4xl">
+                            Song name
+                        </div>
+                        <div class="w-[30%] font-bold text-xl">Artists Name</div>
+                        <div class="font-semibold text-white text-[22px]">0:00</div>
+                        <button class="font-semibold text-[25px] mr-10"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                    <div class="flex justify-between items-center h-[120px] w-[99%] mt-6 bg-[#74809b] rounded-3xl">
+                        <div class="h-[80%] ml-6 w-auto rounded-xl">
+                            <img class="h-full w-full object-cover rounded-xl" src="..//asset/images/albumcover.jpg"
+                                alt="Song album picture" />
+                        </div>
+                        <div class="w-[25%] font-bold flex justify-start items-center text-white text-4xl">
+                            Song name
+                        </div>
+                        <div class="w-[30%] font-bold text-xl">Artists Name</div>
+                        <div class="font-semibold text-white text-[22px]">0:00</div>
+                        <button class="font-semibold text-[25px] mr-10"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+                    <div class="flex justify-between items-center h-[120px] w-[99%] mt-6 bg-[#74809b] rounded-3xl">
+                        <div class="h-[80%] ml-6 w-auto rounded-xl">
+                            <img class="h-full w-full object-cover rounded-xl" src="..//asset/images/albumcover.jpg"
+                                alt="Song album picture" />
+                        </div>
+                        <div class="w-[25%] font-bold flex justify-start items-center text-white text-4xl">
+                            Song name
+                        </div>
+                        <div class="w-[30%] font-bold text-xl">Artists Name</div>
+                        <div class="font-semibold text-white text-[22px]">0:00</div>
+                        <button class="font-semibold text-[25px] mr-10"><i class="fa-solid fa-ellipsis"></i></button>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- right side items  -->
+            <div class="mb-7 col-span-3 mt-7 flex justify-center items-center overflow-hidden">
+                <div class="h-full w-full">
+                    <div class="h-[37%] rounded-t-large bg-gradient-to-r from-red-500 to-red-400">
+                        <div class="relative h-full">
+                            <div class="h-full flex justify-center">
+                                <img class="h-full opacity-60" src="../asset/images/artist_image-removebg.png"
+                                    alt="Image">
+                            </div>
+                            <h1
+                                class="absolute bottom-0 w-full h-[20%] text-white font-bold text-5xl text-center bg-gradient-to-t from-red-900 to-transparent">
+                                Playlist Name</h1>
+                        </div>
+                    </div>
+
+                    <div class="h-[63%] rounded-b-large bg-[#74809b] overflow-auto flex-col justify-center">
+                        <div class="flex justify-between items-center h-[17%] w-[95%] mx-auto mt-3">
+                            <div class="flex gap-5 items-center h-full w-full">
+                                <div class="h-[70%] ml-1 w-auto rounded-xl">
+                                    <img class="h-full w-full object-cover rounded-md"
+                                        src="..//asset/images/albumcover.jpg" alt="Song album picture" />
+                                </div>
+                                <div class="font-semibold text-white text-2xl">
+                                    Song name
+                                </div>
+                            </div>
+                            <div class="font-semibold text-white text-lg mr-5">0:00</div>
+                            <button class="font-semibold text-[25px] mr-5">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </div>
+                        <div class="flex justify-between items-center h-[17%] w-[95%] mx-auto mt-3">
+                            <div class="flex gap-5 items-center h-full w-full">
+                                <div class="h-[70%] ml-1 w-auto rounded-xl">
+                                    <img class="h-full w-full object-cover rounded-md"
+                                        src="..//asset/images/albumcover.jpg" alt="Song album picture" />
+                                </div>
+                                <div class="font-semibold text-white text-2xl">
+                                    Song name
+                                </div>
+                            </div>
+                            <div class="font-semibold text-white text-lg mr-5">0:00</div>
+                            <button class="font-semibold text-[25px] mr-5">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </div>
+                        <div class="flex justify-between items-center h-[17%] w-[95%] mx-auto mt-3">
+                            <div class="flex gap-5 items-center h-full w-full">
+                                <div class="h-[70%] ml-1 w-auto rounded-xl">
+                                    <img class="h-full w-full object-cover rounded-md"
+                                        src="..//asset/images/albumcover.jpg" alt="Song album picture" />
+                                </div>
+                                <div class="font-semibold text-white text-2xl">
+                                    Song name
+                                </div>
+                            </div>
+                            <div class="font-semibold text-white text-lg mr-5">0:00</div>
+                            <button class="font-semibold text-[25px] mr-5">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </div>
+                        <div class="flex justify-between items-center h-[17%] w-[95%] mx-auto mt-3">
+                            <div class="flex gap-5 items-center h-full w-full">
+                                <div class="h-[70%] ml-1 w-auto rounded-xl">
+                                    <img class="h-full w-full object-cover rounded-md"
+                                        src="..//asset/images/albumcover.jpg" alt="Song album picture" />
+                                </div>
+                                <div class="font-semibold text-white text-2xl">
+                                    Song name
+                                </div>
+                            </div>
+                            <div class="font-semibold text-white text-lg mr-5">0:00</div>
+                            <button class="font-semibold text-[25px] mr-5">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </div>
+                        <div class="flex justify-between items-center h-[17%] w-[95%] mx-auto mt-3">
+                            <div class="flex gap-5 items-center h-full w-full">
+                                <div class="h-[70%] ml-1 w-auto rounded-xl">
+                                    <img class="h-full w-full object-cover rounded-md"
+                                        src="..//asset/images/albumcover.jpg" alt="Song album picture" />
+                                </div>
+                                <div class="font-semibold text-white text-2xl">
+                                    Song name
+                                </div>
+                            </div>
+                            <div class="font-semibold text-white text-lg mr-5">0:00</div>
+                            <button class="font-semibold text-[25px] mr-5">
+                                <i class="fa-solid fa-ellipsis"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="app.js"></script>
+</body>
+
+</html>
